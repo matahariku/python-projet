@@ -1,0 +1,8 @@
+# Ini adalah contoh kode untuk menguji fungsi di my_module.py
+import unittest
+from src.my_module import hello_world
+
+class TestMyModule(unittest.TestCase):
+
+    def test_hello_world(self):
+        self.assertEqual(hello_world(), "Hello, world!")

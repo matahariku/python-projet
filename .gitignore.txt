@@ -1,0 +1,8 @@
+# Ingore berbagai file yang tidak perlu di commit
+
+# Cache Python
+__pycache__/
+
+# Folder khusus IDE atau editor
+.idea/
+.vscode/

@@ -1,0 +1,3 @@
+# Daftar semua pustaka yang Anda butuhkan untuk proyek Anda
+# contoh:
+requests==2.25.1

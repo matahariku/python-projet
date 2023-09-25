@@ -1,0 +1,4 @@
+# Ini adalah contoh kode sumber Python
+
+def hello_world():
+    return "Hello, world!"
