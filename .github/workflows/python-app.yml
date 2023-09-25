@@ -9,6 +9,9 @@ on:
 permissions:
   contents: read
 
+env:  # <-- Définissez vos variables d'environnement ici
+  PYTHONPATH: ./src
+  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -50,7 +53,10 @@ jobs:
       run: echo "PYTHONPATH=./src" >> $GITHUB_ENV
 
     - name: Run Tests
+      env:
+        PYTHONPATH: ./src
       run: |
         pip install pytest
         pytest
+     
 
