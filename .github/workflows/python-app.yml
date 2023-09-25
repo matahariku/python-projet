@@ -30,6 +30,16 @@ jobs:
       run: |
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+    - name: Debug Information
+      run: |
+        echo "Python Version:"
+        python --version
+        echo "Current Directory:"
+        pwd
+        echo "List All Files and Directories:"
+        ls -al
+        echo "List Files and Directories in src:"
+        ls -al src
     - name: Test with pytest
       env:
         PYTHONPATH: ./src
