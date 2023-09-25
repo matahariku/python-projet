@@ -15,21 +15,26 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+
     - name: Set up Python 3.10
       uses: actions/setup-python@v3
       with:
         python-version: "3.10"
+
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
     - name: Install xvfb
       run: sudo apt-get install -y xvfb
+
     - name: Lint with flake8
       run: |
+        pip install flake8
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+
     - name: Debug Information
       run: |
         echo "Python Version:"
@@ -40,13 +45,12 @@ jobs:
         ls -al
         echo "List Files and Directories in src:"
         ls -al src
-    - name: Test with pytest
-      env:
-        PYTHONPATH: ./src
-      run: xvfb-run --auto-servernum --server-num=1 pytest
+
+    - name: Set PYTHONPATH
+      run: echo "PYTHONPATH=./src" >> $GITHUB_ENV
+
+    - name: Run Tests
+      run: |
         pip install pytest
-        export PYTHONPATH=src
         pytest
-      
-      
 
